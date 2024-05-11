@@ -12,19 +12,20 @@ try {
     $headers = array(
         "Ocp-Apim-Subscription-Key: $key",
         "Content-Type: application/ssml+xml",
-        "X-Microsoft-OutputFormat: audio-24khz-160kbitrate-mono-mp3",
+        "X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm",
         "User-Agent: curl",
     );
 
-    $requestBody = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='en-US-AriaNeural'>$text</voice></speak>";
+    $requestBody = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='en-US-AvaMultilingualNeural'>$text</voice></speak>";
 
     $ch = curl_init($url);
-
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $requestBody);
+    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $requestBody);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    
     $response = curl_exec($ch);
 
     if(curl_errno($ch)){
@@ -33,8 +34,7 @@ try {
 
     curl_close($ch);
 
-    // Output the audio data directly
-    header('Content-Type: audio/mpeg');
+    header('Content-Type: audio/x-wav');
     echo $response;
 
 } catch (Exception $e) {
