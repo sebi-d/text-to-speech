@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Text to Speech</title>
+    <link rel="shortcut icon" href="https://appservice.azureedge.net/images/app-service/v4/favicon.ico"
+        type="image/x-icon" />
+    <link href="https://appservice.azureedge.net/css/app-service/v4/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 13px;
+        }
+
+        * {
+            border-radius: 0 !important;
+        }
+    </style>
+    <script src="https://appservice.azureedge.net/js/app-service/v4/loc.min.js" crossorigin="anonymous"></script>
+    <script
+        type="text/javascript">window.onload = function () { try { var a = window.location.hostname; if (a.includes(".azurewebsites.net")) { a = a.replace(".azurewebsites.net", "") }; var b = document.getElementById("depCenterLink"); b.setAttribute("href", b.getAttribute("href") + "&sitename=" + a); loc() } catch (d) { } }</script>
+</head>
+
+<body>
+    <form action="index.php">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Text to Speech</h1>
+                    <p>Enter the text you want to convert to speech</p>
+                    <div class="form-group
+                        ">
+                        <label for="text">Text</label>
+                        <textarea class="form-control" id="text" name="text" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
