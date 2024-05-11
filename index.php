@@ -33,10 +33,11 @@ try {
 
     curl_close($ch);
 
-    header("Content-Type: audio/mpeg");
+    // Output the audio data directly
+    header('Content-Type: audio/mpeg');
     echo $response;
-    
-    } catch (Exception $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
+
+} catch (Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}
 ?>
